@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { DashboardHeader } from '@/components/DashboardHeader';
 import { OverviewDashboard } from '@/components/OverviewDashboard';
+import { TeamsView } from '@/components/TeamsView';
+import { IndividualsView } from '@/components/IndividualsView';
 import { mockAlerts } from '@/data/mockData';
 
 export default function Dashboard() {
@@ -11,23 +13,9 @@ export default function Dashboard() {
       case 'overview':
         return <OverviewDashboard />;
       case 'teams':
-        return (
-          <div className="flex items-center justify-center h-96 bg-card rounded-lg border border-border">
-            <div className="text-center">
-              <h3 className="text-lg font-semibold mb-2">Team View</h3>
-              <p className="text-muted-foreground">Detailed team-level insights coming soon</p>
-            </div>
-          </div>
-        );
+        return <TeamsView />;
       case 'individuals':
-        return (
-          <div className="flex items-center justify-center h-96 bg-card rounded-lg border border-border">
-            <div className="text-center">
-              <h3 className="text-lg font-semibold mb-2">Individual View</h3>
-              <p className="text-muted-foreground">Person-specific insights coming soon</p>
-            </div>
-          </div>
-        );
+        return <IndividualsView />;
       case 'insights':
         return (
           <div className="flex items-center justify-center h-96 bg-card rounded-lg border border-border">
