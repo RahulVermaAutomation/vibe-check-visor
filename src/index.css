@@ -2,56 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* AI Pulse Check Agent Design System - Professional Dashboard Theme */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Core Backgrounds */
+    --background: 248 250 252;
+    --foreground: 203 48% 12%;
 
+    /* Cards and Surfaces */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 203 48% 12%;
 
+    /* Interactive Elements */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 203 48% 12%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Brand Colors - Professional Blue Theme */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 217 91% 55%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Status Indicators */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --success-light: 142 71% 95%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --warning: 43 96% 56%;
+    --warning-foreground: 0 0% 100%;
+    --warning-light: 43 96% 95%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --danger: 0 84% 60%;
+    --danger-foreground: 0 0% 100%;
+    --danger-light: 0 84% 95%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Neutral Tones */
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 203 48% 12%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 203 24% 45%;
 
-    --radius: 0.5rem;
+    --accent: 210 20% 96%;
+    --accent-foreground: 203 48% 12%;
 
+    /* System Colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%;
+
+    /* Design Tokens */
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 55%));
+    --gradient-success: linear-gradient(135deg, hsl(142 71% 45%), hsl(142 71% 40%));
+    --gradient-dashboard: linear-gradient(180deg, hsl(248 250 252) 0%, hsl(241 249 251) 100%);
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(203 48% 12% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(203 48% 12% / 0.1), 0 2px 4px -1px hsl(203 48% 12% / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(203 48% 12% / 0.1), 0 4px 6px -2px hsl(203 48% 12% / 0.05);
+    --shadow-glow: 0 0 0 1px hsl(217 91% 60% / 0.1), 0 8px 32px hsl(217 91% 60% / 0.12);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* Sidebar Design Tokens */
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -67,6 +95,19 @@ All colors MUST be HSL.
 
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
+    --primary-hover: 210 40% 90%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --success-light: 142 71% 15%;
+
+    --warning: 43 96% 56%;
+    --warning-foreground: 0 0% 100%;
+    --warning-light: 43 96% 15%;
+
+    --danger: 0 62.8% 30.6%;
+    --danger-foreground: 210 40% 98%;
+    --danger-light: 0 62.8% 15%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -83,6 +124,7 @@ All colors MUST be HSL.
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -100,6 +142,31 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-gradient-dashboard text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  .metric-card {
+    @apply bg-card border border-border rounded-lg p-6 shadow-md hover:shadow-lg transition-all duration-300;
+  }
+
+  .status-indicator {
+    @apply inline-flex items-center gap-2 px-2 py-1 rounded-full text-xs font-medium;
+  }
+
+  .status-healthy {
+    @apply bg-success-light text-success border border-success/20;
+  }
+
+  .status-warning {
+    @apply bg-warning-light text-warning border border-warning/20;
+  }
+
+  .status-critical {
+    @apply bg-danger-light text-danger border border-danger/20;
   }
 }
