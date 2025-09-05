@@ -8,9 +8,10 @@ import { mockTeams, mockAlerts, mockTrendData, getOverallMetrics, Team } from '@
 interface OverviewDashboardProps {
   onTeamClick?: (team: Team) => void;
   onNavigateToTeams?: () => void;
+  onAlertViewDetails?: (teamId: string) => void;
 }
 
-export function OverviewDashboard({ onTeamClick, onNavigateToTeams }: OverviewDashboardProps) {
+export function OverviewDashboard({ onTeamClick, onNavigateToTeams, onAlertViewDetails }: OverviewDashboardProps) {
   const metrics = getOverallMetrics();
   
   const handleTeamClick = (team: Team) => {
@@ -63,7 +64,7 @@ export function OverviewDashboard({ onTeamClick, onNavigateToTeams }: OverviewDa
           <MoraleChart data={mockTrendData} />
         </div>
         <div>
-          <AlertFeed alerts={mockAlerts} maxItems={4} />
+          <AlertFeed alerts={mockAlerts} maxItems={4} onViewDetails={onAlertViewDetails} />
         </div>
       </div>
 

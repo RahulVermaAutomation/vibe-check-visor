@@ -3,19 +3,38 @@ import { DashboardHeader } from '@/components/DashboardHeader';
 import { OverviewDashboard } from '@/components/OverviewDashboard';
 import { TeamsView } from '@/components/TeamsView';
 import { IndividualsView } from '@/components/IndividualsView';
-import { mockAlerts, Team } from '@/data/mockData';
+import { TeamDetailView } from '@/components/TeamDetailView';
+import { mockAlerts, mockTeams, mockEmployees, Team } from '@/data/mockData';
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('overview');
+  const [selectedTeam, setSelectedTeam] = useState<Team | null>(null);
 
   const handleTeamClick = (team: Team) => {
-    // Navigate to teams tab and show team details
-    setActiveTab('teams');
-    // Pass team data to TeamsView - this will be handled by TeamsView state
+    setSelectedTeam(team);
+    setActiveTab('teamDetail');
   };
 
   const handleNavigateToTeams = () => {
     setActiveTab('teams');
+  };
+
+  const handleBackFromTeamDetail = () => {
+    setSelectedTeam(null);
+    setActiveTab('overview');
+  };
+
+  // Get team members for selected team
+  const getTeamMembers = (teamId: string) => {
+    return mockEmployees.filter(emp => emp.team_id === teamId);
+  };
+
+  // Handle alert view details - find team by alert team_id
+  const handleAlertViewDetails = (teamId: string) => {
+    const team = mockTeams.find(t => t.id === teamId);
+    if (team) {
+      handleTeamClick(team);
+    }
   };
 
   const renderContent = () => {
@@ -25,10 +44,19 @@ export default function Dashboard() {
           <OverviewDashboard 
             onTeamClick={handleTeamClick}
             onNavigateToTeams={handleNavigateToTeams}
+            onAlertViewDetails={handleAlertViewDetails}
           />
         );
       case 'teams':
         return <TeamsView />;
+      case 'teamDetail':
+        return selectedTeam ? (
+          <TeamDetailView 
+            team={selectedTeam} 
+            teamMembers={getTeamMembers(selectedTeam.id)}
+            onBack={handleBackFromTeamDetail}
+          />
+        ) : null;
       case 'individuals':
         return <IndividualsView />;
       case 'insights':

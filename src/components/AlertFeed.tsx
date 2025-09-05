@@ -7,9 +7,10 @@ import { Alert } from '@/data/mockData';
 interface AlertFeedProps {
   alerts: Alert[];
   maxItems?: number;
+  onViewDetails?: (teamId: string) => void;
 }
 
-export function AlertFeed({ alerts, maxItems = 5 }: AlertFeedProps) {
+export function AlertFeed({ alerts, maxItems = 5, onViewDetails }: AlertFeedProps) {
   const getAlertIcon = (type: Alert['type']) => {
     switch (type) {
       case 'critical':
@@ -96,7 +97,13 @@ export function AlertFeed({ alerts, maxItems = 5 }: AlertFeedProps) {
                     {alert.type.charAt(0).toUpperCase() + alert.type.slice(1)}
                   </Badge>
                   
-                  <Button variant="ghost" size="sm" className="text-xs h-6 px-2">
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="text-xs h-6 px-2"
+                    onClick={() => alert.team_id && onViewDetails?.(alert.team_id)}
+                    disabled={!alert.team_id}
+                  >
                     View Details
                   </Button>
                 </div>
