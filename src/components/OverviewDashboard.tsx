@@ -3,14 +3,18 @@ import { MetricCard } from './MetricCard';
 import { TeamHealthGrid } from './TeamHealthGrid';
 import { AlertFeed } from './AlertFeed';
 import { MoraleChart } from './MoraleChart';
-import { mockTeams, mockAlerts, mockTrendData, getOverallMetrics } from '@/data/mockData';
+import { mockTeams, mockAlerts, mockTrendData, getOverallMetrics, Team } from '@/data/mockData';
 
-export function OverviewDashboard() {
+interface OverviewDashboardProps {
+  onTeamClick?: (team: Team) => void;
+  onNavigateToTeams?: () => void;
+}
+
+export function OverviewDashboard({ onTeamClick, onNavigateToTeams }: OverviewDashboardProps) {
   const metrics = getOverallMetrics();
   
-  const handleTeamClick = (team: any) => {
-    console.log('Team clicked:', team);
-    // Here you would navigate to team details or open a modal
+  const handleTeamClick = (team: Team) => {
+    onTeamClick?.(team);
   };
 
   return (
@@ -95,19 +99,28 @@ export function OverviewDashboard() {
       <div className="bg-card border border-border rounded-lg p-6">
         <h3 className="text-lg font-semibold mb-4">Quick Insights</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
-          <div className="text-center">
+          <div 
+            className="text-center cursor-pointer p-4 rounded-lg transition-all duration-200 hover:bg-accent hover:scale-105"
+            onClick={onNavigateToTeams}
+          >
             <div className="text-2xl font-bold text-success mb-1">
               {mockTeams.filter(t => t.health_score >= 80).length}
             </div>
             <p className="text-muted-foreground">Teams performing well</p>
           </div>
-          <div className="text-center">
+          <div 
+            className="text-center cursor-pointer p-4 rounded-lg transition-all duration-200 hover:bg-accent hover:scale-105"
+            onClick={onNavigateToTeams}
+          >
             <div className="text-2xl font-bold text-warning mb-1">
               {mockTeams.filter(t => t.health_score >= 60 && t.health_score < 80).length}
             </div>
             <p className="text-muted-foreground">Teams needing attention</p>
           </div>
-          <div className="text-center">
+          <div 
+            className="text-center cursor-pointer p-4 rounded-lg transition-all duration-200 hover:bg-accent hover:scale-105"
+            onClick={onNavigateToTeams}
+          >
             <div className="text-2xl font-bold text-danger mb-1">
               {mockTeams.filter(t => t.health_score < 60).length}
             </div>

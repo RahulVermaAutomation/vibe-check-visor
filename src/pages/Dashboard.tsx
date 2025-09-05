@@ -3,15 +3,30 @@ import { DashboardHeader } from '@/components/DashboardHeader';
 import { OverviewDashboard } from '@/components/OverviewDashboard';
 import { TeamsView } from '@/components/TeamsView';
 import { IndividualsView } from '@/components/IndividualsView';
-import { mockAlerts } from '@/data/mockData';
+import { mockAlerts, Team } from '@/data/mockData';
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('overview');
 
+  const handleTeamClick = (team: Team) => {
+    // Navigate to teams tab and show team details
+    setActiveTab('teams');
+    // Pass team data to TeamsView - this will be handled by TeamsView state
+  };
+
+  const handleNavigateToTeams = () => {
+    setActiveTab('teams');
+  };
+
   const renderContent = () => {
     switch (activeTab) {
       case 'overview':
-        return <OverviewDashboard />;
+        return (
+          <OverviewDashboard 
+            onTeamClick={handleTeamClick}
+            onNavigateToTeams={handleNavigateToTeams}
+          />
+        );
       case 'teams':
         return <TeamsView />;
       case 'individuals':
