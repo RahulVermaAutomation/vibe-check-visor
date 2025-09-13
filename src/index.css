@@ -28,9 +28,9 @@
     --success-foreground: 0 0% 100%;
     --success-light: 142 71% 95%;
 
-    --warning: 45 93% 47%;
+    --warning: 140 47% 71%;
     --warning-foreground: 0 0% 100%;
-    --warning-light: 45 93% 95%;
+    --warning-light: 140 47% 95%;
 
     --danger: 0 84% 60%;
     --danger-foreground: 0 0% 100%;
@@ -101,9 +101,9 @@
     --success-foreground: 0 0% 100%;
     --success-light: 142 71% 15%;
 
-    --warning: 45 93% 47%;
+    --warning: 140 47% 71%;
     --warning-foreground: 0 0% 100%;
-    --warning-light: 45 93% 15%;
+    --warning-light: 140 47% 15%;
 
     --danger: 0 62.8% 30.6%;
     --danger-foreground: 210 40% 98%;
