@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Progress } from '@/components/ui/progress';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { mockEmployees, mockTeams, Employee } from '@/data/mockData';
 
 export function IndividualsView() {
@@ -14,6 +15,7 @@ export function IndividualsView() {
   const [teamFilter, setTeamFilter] = useState('all');
   const [riskFilter, setRiskFilter] = useState('all');
   const [sortBy, setSortBy] = useState('morale_score');
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   // Filter and sort employees
   const filteredEmployees = mockEmployees
@@ -290,10 +292,27 @@ export function IndividualsView() {
 
                   {/* Action Buttons */}
                   <div className="flex gap-2 pt-2">
-                    <Button size="sm" variant="outline" className="flex-1">
-                      <Mail className="h-3 w-3 mr-1" />
-                      Schedule 1:1
-                    </Button>
+                    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                      <DialogTrigger asChild>
+                        <Button size="sm" variant="outline" className="flex-1">
+                          <Mail className="h-3 w-3 mr-1" />
+                          Schedule 1:1
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>1:1 Request Sent</DialogTitle>
+                          <DialogDescription>
+                            A note has been sent to the employee letting them know you'd like to connect and discuss their concerns.
+                          </DialogDescription>
+                        </DialogHeader>
+                        <div className="flex justify-end">
+                          <Button onClick={() => setIsDialogOpen(false)}>
+                            Dismiss
+                          </Button>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
                     <Button size="sm" variant="outline" className="flex-1">
                       View Profile
                     </Button>
