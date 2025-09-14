@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { X, Calendar, Mail, ExternalLink } from 'lucide-react';
 import { Employee, mockTeams } from '@/data/mockData';
 
@@ -20,11 +22,15 @@ interface MeetingData {
 
 export function OneOnOneModal({ employee, isOpen, onClose }: OneOnOneModalProps) {
   const [meetingData, setMeetingData] = useState<MeetingData | null>(null);
+  const [editableSubject, setEditableSubject] = useState<string>('');
+  const [editableAgenda, setEditableAgenda] = useState<string>('');
 
   useEffect(() => {
     if (employee && isOpen) {
       const data = generateMeetingData(employee);
       setMeetingData(data);
+      setEditableSubject(data.subject);
+      setEditableAgenda(data.body);
     }
   }, [employee, isOpen]);
 
@@ -111,12 +117,12 @@ export function OneOnOneModal({ employee, isOpen, onClose }: OneOnOneModalProps)
   const openOutlookMeeting = () => {
     if (!meetingData) return;
 
-    const { subject, body, employeeEmail } = meetingData;
+    const { employeeEmail } = meetingData;
 
-    // Create Outlook deep link parameters
+    // Create Outlook deep link parameters using edited content
     const outlookParams = new URLSearchParams({
-      subject: subject,
-      body: body.replace(/\n/g, '%0D%0A'), // Convert line breaks for URL
+      subject: editableSubject,
+      body: editableAgenda.replace(/\n/g, '%0D%0A'), // Convert line breaks for URL
       to: employeeEmail,
       location: 'Microsoft Teams / Conference Room'
     });
@@ -231,9 +237,12 @@ export function OneOnOneModal({ employee, isOpen, onClose }: OneOnOneModalProps)
               <label className="block text-sm font-medium text-modal-text-header mb-2">
                 📋 Meeting Subject
               </label>
-              <div className="bg-muted/20 rounded-lg p-3 border border-modal-border">
-                <p className="text-modal-text-body font-medium">{meetingData.subject}</p>
-              </div>
+              <Input
+                value={editableSubject}
+                onChange={(e) => setEditableSubject(e.target.value)}
+                className="bg-background border-modal-border focus:ring-modal-blue"
+                placeholder="Enter meeting subject"
+              />
             </div>
 
             {/* Meeting Agenda */}
@@ -241,11 +250,12 @@ export function OneOnOneModal({ employee, isOpen, onClose }: OneOnOneModalProps)
               <label className="block text-sm font-medium text-modal-text-header mb-2">
                 📝 Meeting Agenda
               </label>
-              <div className="bg-muted/20 rounded-lg p-4 border border-modal-border">
-                <pre className="whitespace-pre-wrap text-sm text-modal-text-body font-mono leading-relaxed">
-                  {meetingData.body}
-                </pre>
-              </div>
+              <Textarea
+                value={editableAgenda}
+                onChange={(e) => setEditableAgenda(e.target.value)}
+                className="bg-background border-modal-border focus:ring-modal-blue min-h-[200px] font-mono text-sm"
+                placeholder="Enter meeting agenda"
+              />
             </div>
 
             {/* Key Concerns Highlights */}
