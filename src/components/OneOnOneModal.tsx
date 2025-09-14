@@ -50,53 +50,36 @@ export function OneOnOneModal({ employee, isOpen, onClose }: OneOnOneModalProps)
 
     const agendaItems: string[] = [];
 
-    // High priority items based on pulse data
+    // High priority items based on pulse data (limit to 3-4 most important)
     if (employee.morale_score < 70) {
       agendaItems.push('• Current workload and project satisfaction');
-      agendaItems.push('• Ways to improve your work experience');
     }
 
     if (employee.happiness_tenets.recognition_growth < 70) {
       agendaItems.push('• Career development goals and growth opportunities');
-      agendaItems.push('• Skills you would like to develop');
     }
 
     if (employee.happiness_tenets.work_life_balance < 70) {
       agendaItems.push('• Personal well-being and work-life balance');
-      agendaItems.push('• Any support you might need');
     }
 
-    // Add key concern-based items
-    if (employee.key_concerns.includes('workload')) {
+    // Add most critical concern-based item
+    if (employee.key_concerns.includes('workload') && agendaItems.length < 4) {
       agendaItems.push('• Current workload distribution and priorities');
-    }
-
-    if (employee.key_concerns.includes('team_collaboration')) {
-      agendaItems.push('• Team dynamics and collaboration experience');
-    }
-
-    if (employee.key_concerns.includes('growth_opportunities')) {
+    } else if (employee.key_concerns.includes('growth_opportunities') && agendaItems.length < 4) {
       agendaItems.push('• Learning and development opportunities');
-    }
-
-    if (employee.key_concerns.includes('management_support')) {
+    } else if (employee.key_concerns.includes('management_support') && agendaItems.length < 4) {
       agendaItems.push('• Management support and communication');
     }
 
-    if (employee.key_concerns.includes('work_life_balance')) {
-      agendaItems.push('• Strategies for better work-life balance');
+    // Always include recent wins if space allows
+    if (agendaItems.length < 4) {
+      agendaItems.push('• Recent wins and achievements');
     }
 
-    if (employee.key_concerns.includes('recognition')) {
-      agendaItems.push('• Recognition and feedback preferences');
-    }
-
-    // Standard agenda items
-    agendaItems.push('• Recent wins and achievements');
-    agendaItems.push('• Upcoming projects and goals');
-    agendaItems.push('• Any questions or concerns you would like to discuss');
-
-    agenda += agendaItems.join('\n') + '\n\n';
+    // Limit to maximum 4 items
+    const limitedItems = agendaItems.slice(0, 4);
+    agenda += limitedItems.join('\n') + '\n\n';
 
     // Add supportive closing based on risk level
     if (employee.flight_risk === 'high') {
@@ -184,7 +167,7 @@ export function OneOnOneModal({ employee, isOpen, onClose }: OneOnOneModalProps)
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl max-h-[90vh] overflow-hidden bg-modal-background border border-modal-border p-0">
+      <DialogContent className="max-w-2xl max-h-[85vh] bg-modal-background border border-modal-border p-0 flex flex-col [&>button]:hidden">
         {/* Custom Header */}
         <div className="flex justify-between items-start p-6 pb-4 border-b border-modal-border">
           <div className="flex-1">
@@ -214,7 +197,7 @@ export function OneOnOneModal({ employee, isOpen, onClose }: OneOnOneModalProps)
         </div>
 
         {/* Body */}
-        <div className="flex-1 overflow-y-auto px-6 pb-6">
+        <div className="flex-1 overflow-y-auto px-6 pb-4">
           <div className="space-y-6">
             {/* Employee Context */}
             <div className="bg-muted/30 rounded-lg p-4">
@@ -284,7 +267,7 @@ export function OneOnOneModal({ employee, isOpen, onClose }: OneOnOneModalProps)
         </div>
 
         {/* Footer Actions */}
-        <div className="flex justify-end gap-3 p-6 pt-0 border-t border-modal-border">
+        <div className="flex justify-end gap-3 p-4 border-t border-modal-border bg-modal-background">
           <Button 
             variant="outline" 
             onClick={onClose}
