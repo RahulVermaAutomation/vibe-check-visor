@@ -29,6 +29,18 @@ export default {
 					foreground: 'hsl(var(--primary-foreground))',
 					hover: 'hsl(var(--primary-hover))'
 				},
+				'modal-blue': {
+					DEFAULT: 'hsl(var(--modal-blue))',
+					foreground: 'hsl(var(--modal-blue-foreground))',
+					hover: 'hsl(var(--modal-blue-hover))'
+				},
+				'modal': {
+					overlay: 'hsl(var(--modal-overlay))',
+					background: 'hsl(var(--modal-background))',
+					'text-header': 'hsl(var(--modal-text-header))',
+					'text-body': 'hsl(var(--modal-text-body))',
+					border: 'hsl(var(--modal-border))'
+				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))'

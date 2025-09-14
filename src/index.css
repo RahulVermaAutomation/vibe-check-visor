@@ -18,10 +18,22 @@
     --popover: 0 0% 100%;
     --popover-foreground: 203 48% 12%;
 
-    /* Brand Colors - Professional Blue Theme */
-    --primary: 217 91% 60%;
+    /* Brand Colors - Professional Theme */
+    --primary: 158 64% 52%;  /* #10B981 - Primary Green */
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 217 91% 55%;
+    --primary-hover: 158 64% 47%;
+    
+    /* Modal & Outlook Integration Colors */
+    --modal-blue: 217 91% 60%;  /* #3B82F6 - Secondary Blue for Outlook */
+    --modal-blue-foreground: 0 0% 100%;
+    --modal-blue-hover: 217 91% 55%;
+    
+    /* Modal specific colors */
+    --modal-overlay: 0 0% 0% / 0.6;  /* rgba(0, 0, 0, 0.6) */
+    --modal-background: 0 0% 100%;   /* #FFFFFF */
+    --modal-text-header: 210 15% 20%; /* #1F2937 */
+    --modal-text-body: 210 11% 34%;   /* #4B5563 */
+    --modal-border: 220 13% 91%;      /* #E5E7EB */
 
     /* Status Indicators */
     --success: 142 71% 45%;
