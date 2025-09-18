@@ -53,9 +53,9 @@ export const mockTeams: Team[] = [
     name: 'Frontend Development',
     department: 'Engineering',
     health_score: 78,
-    members_count: 8,
+    members_count: 15,
     response_rate: 87.5,
-    manager: 'Sarah Chen',
+    manager: 'David Lamb',
     happiness_tenets: {
       work_fulfillment: 82,
       work_life_balance: 75,
@@ -149,10 +149,10 @@ export const mockTeams: Team[] = [
 export const mockEmployees: Employee[] = [
   {
     id: 'emp-1',
-    name: 'Jordan Smith',
+    name: 'Sarah Hale',
     role: 'Senior Frontend Developer',
     team_id: 'team-1',
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Jordan',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=SarahHale',
     morale_score: 72,
     flight_risk: 'medium',
     last_response: '2024-08-28',
@@ -199,6 +199,132 @@ export const mockEmployees: Employee[] = [
       recognition_growth: 90,
       team_collaboration: 98,
       management_support: 95
+    }
+  },
+  {
+    id: 'emp-4',
+    name: 'Alex Rodriguez',
+    role: 'Frontend Developer',
+    team_id: 'team-1',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=AlexRodriguez',
+    morale_score: 81,
+    flight_risk: 'low',
+    last_response: '2024-08-29',
+    key_concerns: ['technical_debt'],
+    happiness_tenets: {
+      work_fulfillment: 85,
+      work_life_balance: 78,
+      recognition_growth: 75,
+      team_collaboration: 88,
+      management_support: 82
+    }
+  },
+  {
+    id: 'emp-5',
+    name: 'Jamie Park',
+    role: 'UI/UX Developer',
+    team_id: 'team-1',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=JamiePark',
+    morale_score: 67,
+    flight_risk: 'medium',
+    last_response: '2024-08-28',
+    key_concerns: ['workload', 'design_feedback_delays'],
+    happiness_tenets: {
+      work_fulfillment: 70,
+      work_life_balance: 60,
+      recognition_growth: 68,
+      team_collaboration: 72,
+      management_support: 65
+    }
+  },
+  {
+    id: 'emp-6',
+    name: 'Morgan Chen',
+    role: 'Junior Frontend Developer',
+    team_id: 'team-1',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=MorganChen',
+    morale_score: 88,
+    flight_risk: 'low',
+    last_response: '2024-08-29',
+    key_concerns: [],
+    happiness_tenets: {
+      work_fulfillment: 92,
+      work_life_balance: 85,
+      recognition_growth: 90,
+      team_collaboration: 88,
+      management_support: 85
+    }
+  },
+  {
+    id: 'emp-7',
+    name: 'Taylor Kim',
+    role: 'Frontend Developer',
+    team_id: 'team-1',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=TaylorKim',
+    morale_score: 55,
+    flight_risk: 'high',
+    last_response: '2024-08-26',
+    key_concerns: ['career_progression', 'work_life_balance', 'team_communication'],
+    happiness_tenets: {
+      work_fulfillment: 58,
+      work_life_balance: 45,
+      recognition_growth: 50,
+      team_collaboration: 60,
+      management_support: 52
+    }
+  },
+  {
+    id: 'emp-8',
+    name: 'Casey Williams',
+    role: 'Senior Frontend Developer',
+    team_id: 'team-1',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=CaseyWilliams',
+    morale_score: 79,
+    flight_risk: 'low',
+    last_response: '2024-08-29',
+    key_concerns: ['mentoring_workload'],
+    happiness_tenets: {
+      work_fulfillment: 82,
+      work_life_balance: 75,
+      recognition_growth: 78,
+      team_collaboration: 85,
+      management_support: 80
+    }
+  },
+  {
+    id: 'emp-9',
+    name: 'Jordan Lee',
+    role: 'Frontend Developer',
+    team_id: 'team-1',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=JordanLee',
+    morale_score: 74,
+    flight_risk: 'medium',
+    last_response: '2024-08-28',
+    key_concerns: ['project_deadlines', 'skill_development'],
+    happiness_tenets: {
+      work_fulfillment: 76,
+      work_life_balance: 68,
+      recognition_growth: 72,
+      team_collaboration: 80,
+      management_support: 74
+    }
+  },
+  {
+    id: 'emp-10',
+    name: 'River Martinez',
+    role: 'Frontend Developer',
+    team_id: 'team-1',
+    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=RiverMartinez',
+    morale_score: 63,
+    flight_risk: 'medium',
+    last_response: '2024-08-27',
+    key_concerns: ['remote_work_isolation', 'career_direction'],
+    happiness_tenets: {
+      work_fulfillment: 65,
+      work_life_balance: 70,
+      recognition_growth: 58,
+      team_collaboration: 62,
+      management_support: 60
     }
   }
 ];

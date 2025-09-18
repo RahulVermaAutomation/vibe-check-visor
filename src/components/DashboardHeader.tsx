@@ -59,11 +59,11 @@ export function DashboardHeader({ activeTab, onTabChange, alertCount }: Dashboar
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="flex items-center gap-2 hover:bg-muted">
                   <Avatar className="h-8 w-8">
-                    <AvatarImage src="https://api.dicebear.com/7.x/avataaars/svg?seed=Leader" />
-                    <AvatarFallback>SL</AvatarFallback>
+                    <AvatarImage src="https://api.dicebear.com/7.x/avataaars/svg?seed=DavidLamb" />
+                    <AvatarFallback>DL</AvatarFallback>
                   </Avatar>
                   <div className="text-left">
-                    <p className="text-sm font-medium">Sarah Leader</p>
+                    <p className="text-sm font-medium">David Lamb</p>
                     <p className="text-xs text-muted-foreground">VP Engineering</p>
                   </div>
                   <ChevronDown className="h-4 w-4" />
