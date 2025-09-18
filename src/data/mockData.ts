@@ -153,16 +153,16 @@ export const mockEmployees: Employee[] = [
     role: 'Senior Frontend Developer',
     team_id: 'team-1',
     avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=SarahHale',
-    morale_score: 72,
-    flight_risk: 'medium',
-    last_response: '2024-08-28',
-    key_concerns: ['workload', 'growth_opportunities'],
+    morale_score: 58,
+    flight_risk: 'high',
+    last_response: '2024-08-27',
+    key_concerns: ['workload', 'growth_opportunities', 'work_life_balance', 'recognition'],
     happiness_tenets: {
-      work_fulfillment: 75,
-      work_life_balance: 65,
-      recognition_growth: 70,
-      team_collaboration: 80,
-      management_support: 70
+      work_fulfillment: 60,
+      work_life_balance: 48,
+      recognition_growth: 52,
+      team_collaboration: 65,
+      management_support: 55
     }
   },
   {
